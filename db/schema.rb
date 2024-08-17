@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_17_160628) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_17_191326) do
+  create_table "tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.string "name", limit: 100
+    t.string "manager", limit: 50
+    t.date "due_date", null: false
+    t.boolean "is_completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_tasks_on_trip_id"
+  end
+
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", limit: 50, null: false
     t.string "detail", limit: 100
@@ -22,4 +33,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_17_160628) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "tasks", "trips", on_delete: :cascade
 end
