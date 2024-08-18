@@ -1,0 +1,16 @@
+<h1>旅行編集画面</h1>
+
+<%= form_with(model: @trip, url: trip_index_path, method: :post, local: true) do |form| %>
+  <%= form.text_field :title, value: @trip.title %>
+  <%= form.text_area :detail, value: @trip.detail %>
+  <%= form.date_select :start_date, value: @trip.start_date %>
+  <%= form.date_select :end_date, value: @trip.end_date %>
+  <%= form.text_field :image, value: @trip.image %>
+  <%= form.submit "送信" %>
+<% end %>
+
+<%= form_with(model: @trip, url: trip_path(id: @trip.id), method: :delete, local: true) do |form| %>
+  <%= form.submit "削除" %>
+<% end %>
+
+<%= link_to '旅行一覧に戻る', top_path %>

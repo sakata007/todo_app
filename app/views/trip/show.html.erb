@@ -1,0 +1,22 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>旅行名</th>
+      <th>開始日</th>
+      <th>終了日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><%= @trip.id %></td>
+    <td><%= @trip.title %></td>
+    <td><%= @trip.start_date %></td>
+    <td><%= @trip.end_date %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to '旅行情報を編集', edit_trip_path(id: @trip.id) %>
+<%= link_to '旅行一覧に戻る', top_path %>
