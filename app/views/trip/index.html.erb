@@ -1,0 +1,34 @@
+<h1>Trip#index</h1>
+<p>Find me in app/views/trip/index.html.erb</p>
+
+<%= form_with url: top_path, method: :get, local: true do %>
+  <div>
+    <%= check_box_tag :show_all, '1', params[:show_all] == '1' %>
+    <%= label_tag :show_all, 'すべての旅行を表示' %>
+    <%= submit_tag '表示' %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>旅行名</th>
+      <th>開始日</th>
+      <th>終了日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= trip.id %></td>
+        <td><%= trip.title %></td>
+        <td><%= trip.start_date %></td>
+        <td><%= trip.end_date %></td>
+        <td><%= link_to 'check todo', trip_path(id: trip.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '旅行を新規作成する', new_trip_path %>
